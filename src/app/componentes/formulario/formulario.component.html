@@ -1,0 +1,71 @@
+
+<hr>
+<form (submit)="guardar(formulariodealta)" autocomplete="off" #formulariodealta="ngForm">
+
+  <div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               name="nombre"
+               [class.is-invalid]="nombre.invalid && nombre.touched"
+               #nombre="ngModel" 
+               ngModel
+               required
+               minlength="5">
+      </div>
+      <small *ngIf="nombre.invalid && nombre.touched" class="form-text text-danger">El nombre es obligatorio y debe contener al menos cinco caracteres</small>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               name="apellido"
+               [class.is-invalid]="apellido.invalid && apellido.touched"
+               #apellido="ngModel"
+               ngModel
+               required
+               minlength="5">
+      </div>
+      <small *ngIf="apellido.invalid && apellido.touched" class="form-text text-danger">El apellido es obligatorio y debe contener al menos cinco caracteres</small>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             name="email"
+             [class.is-invalid]="correo.invalid && correo.touched"
+             #correo = "ngModel"
+             ngModel
+             required
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    </div>
+    <small *ngIf="correo.invalid && correo.touched" class="form-text text-danger">El correo es obligatorio y debe ser un correo válido</small>
+  </div>
+
+
+<!-- *ngIf="correo.valid && nombre.valid && apellido.valid"  //  *ngIf="formulario.valid"-->
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button  type="submit" class="btn btn-outline-primary">
+        Guardar
+      </button>
+    </div>
+  </div>
+
+</form>
